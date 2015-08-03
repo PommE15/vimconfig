@@ -1,60 +1,79 @@
-language C
-set guifont=Courier_New:h12:cANSI
-set langmenu=C
-set helplang=en
-set encoding=utf-8
-set termencoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8,koi8-r,cp1251,default,latin1
-set langmenu=en_US.UTF-8
-language US
-language mes US
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-set nocompatible
-"source $VIMRUNTIME/vimrc_example.vim
-"source $VIMRUNTIME/mswin.vim
-"behave mswin
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-filetype off "required
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
 
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'bling/vim-airline'
+Plugin 'pangloss/vim-javascript'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'othree/html5.vim'
+Plugin 'mattn/emmet-vim' 
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'wookiehangover/jshint.vim'
+Plugin 'rking/ag.vim'
 
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
-"Pom setting
-colorscheme slate
-set tabstop=4
-set shiftwidth=4
-"set softtabstop=4
-set expandtab
-set smartindent
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
 
-syntax on
+" Put your non-Plugin stuff after this line
 
-"highlight all search occurence
-set hlsearch
+" syntastic setting {{{
+let g:syntastic_javascript_checkers = ['jshint']
+" }}}
 
-"show number
-set number
-
-"no automatic backup file
-set nobackup
-
-"make backspace work
-set backspace=2
-
-Bundle 'gmaryk/vundle'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'hallettj/jslint.vim'
-"Bundle 'vim-scripts/JavaScript-Indent'
-"Bundle 'helino/vim-json'
-Bundle 'scrooloose/nerdtree'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'tpope/vim-surround'
-Bundle 'mattn/zencoding-vim'
-
-filetype plugin indent on "required
-
-"powerline config
-let g:Powerline_symbols = 'fancy'
+" airline setting {{{
+"let g:airline_powerline_fonts = 1 
+"if !exists('g:airline_symbols')
+"  let g:airline_symbols = {}
+"endif
+"let g:airline_symbols.space = "\ua0"
 set laststatus=2
+" }}}
+
+" cursorshape setting {{{
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+" }}}
+
+" leave the insert mode 
+imap ii <Esc> 
+
+syntax on 		      " highlihg syntax
+colorscheme darkblue
+set hlsearch        " highlight all search occurence
+set cursorline      " highlight current line 
+set number          " show line numbers
+set backspace=2     " make backspace work like in other editors
+
+" tab setting {{{
+set expandtab       " convert tabs to spaces
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+" }}}
